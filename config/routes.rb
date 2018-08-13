@@ -4,6 +4,6 @@ Rails.application.routes.draw do
     resources :questions, only: [:index, :show]
     resources :gifts, only: [:index, :show]
     get 'results', to: 'results#show'
-    resources :results, only: [:create, :update] 
+    resources :results, only: [:create] 
   end
 end
