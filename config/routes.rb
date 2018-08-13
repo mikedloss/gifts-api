@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     get 'heartbeat', to: 'diagnostics#index'
     resources :questions, only: [:index, :show]
     resources :gifts, only: [:index, :show]
-    resources :results, only: [:show, :post, :patch]
+    get 'results', to: 'results#show'
+    resources :results, only: [:create, :update]
   end
 end
