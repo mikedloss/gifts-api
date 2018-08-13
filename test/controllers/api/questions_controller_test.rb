@@ -1,13 +1,13 @@
 require 'test_helper'
 
-class GiftsControllerTest < ActionDispatch::IntegrationTest
+class API::QuestionsControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
-    get gifts_index_url
+    get questions_index_url
     assert_response :success
   end
 
   test "should get show" do
-    get gifts_show_url
+    get questions_show_url
     assert_response :success
   end
 
