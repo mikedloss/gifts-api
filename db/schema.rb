@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_13_145057) do
+ActiveRecord::Schema.define(version: 2018_08_13_172621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2018_08_13_145057) do
     t.bigint "secondary3_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.json "raw_results"
     t.index ["primary1_id"], name: "index_results_on_primary1_id"
     t.index ["primary2_id"], name: "index_results_on_primary2_id"
     t.index ["primary3_id"], name: "index_results_on_primary3_id"
