@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_08_184856) do
+ActiveRecord::Schema.define(version: 2018_08_13_145057) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,25 @@ ActiveRecord::Schema.define(version: 2018_08_08_184856) do
     t.string "question"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.string "uuid"
+    t.string "email"
+    t.bigint "primary1_id"
+    t.bigint "primary2_id"
+    t.bigint "primary3_id"
+    t.bigint "secondary1_id"
+    t.bigint "secondary2_id"
+    t.bigint "secondary3_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["primary1_id"], name: "index_results_on_primary1_id"
+    t.index ["primary2_id"], name: "index_results_on_primary2_id"
+    t.index ["primary3_id"], name: "index_results_on_primary3_id"
+    t.index ["secondary1_id"], name: "index_results_on_secondary1_id"
+    t.index ["secondary2_id"], name: "index_results_on_secondary2_id"
+    t.index ["secondary3_id"], name: "index_results_on_secondary3_id"
   end
 
 end
