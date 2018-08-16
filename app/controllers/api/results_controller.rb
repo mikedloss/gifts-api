@@ -12,17 +12,16 @@ class API::ResultsController < ApplicationController
       @answers[index % 27] += answer.to_i
     end
 
-    top6_gifts = @answers.sort_by{|k, v| v}.reverse.slice(0, 6)
-    gift_ids = top6_gifts.collect(&:first)
-    p1, p2, p3, s1, s2, s3 = top6_gifts
+    # get the top 6 gifts with their scores
+    p1, p2, p3, s1, s2, s3 = @answers.sort_by{|k, v| v}.reverse.slice(0, 6)
 
     @result = Result.create(results_params)
-    @result.primary1_id = gift_ids[0]
-    @result.primary2_id = gift_ids[1]
-    @result.primary3_id = gift_ids[2]
-    @result.secondary1_id = gift_ids[3]
-    @result.secondary2_id = gift_ids[4]
-    @result.secondary3_id = gift_ids[5]
+    @result.primary1_id = p1[0]
+    @result.primary2_id = p2[0]
+    @result.primary3_id = p3[0]
+    @result.secondary1_id = s1[0]
+    @result.secondary2_id = s2[0]
+    @result.secondary3_id = s3[0]
     @result.raw_results = @answers.to_json
 
     if @result.save
