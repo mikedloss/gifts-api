@@ -15,7 +15,10 @@ class API::ResultsController < ApplicationController
       end
 
       # get the top 6 gifts with their scores
-      p1, p2, p3, s1, s2, s3 = @answers.sort_by{|k, v| v}.reverse.slice(0, 6)
+      p1, p2, p3, s1, s2, s3 = @answers
+        .sort_by { |k,v| -v }
+        .slice(0, 6)
+        .map { |e| [e[0].to_s.to_i + 1, e[1]] }
 
       @result.uuid = SecureRandom.uuid
       @result.primary1_id = p1[0]
